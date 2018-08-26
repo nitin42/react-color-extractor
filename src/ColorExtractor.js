@@ -17,8 +17,6 @@ type Props = {
   getColors: (data: { colors: Array<string | number> }) => {},
   // Color format RGB
   rgb: boolean,
-  // Color format HSL
-  hsl: boolean,
   // Get the image ref through selector id
   imgId: string,
   // Get the image ref through selector className
@@ -59,7 +57,6 @@ class ColorExtractor extends React.Component<Props, void> {
     onError: (err: Object) => {},
     getColors: (data: { colors: Array<number | string> }) => {},
     rgb: false,
-    hsl: false,
     hex: true,
     imgId: null,
     src: null,
@@ -135,8 +132,6 @@ class ColorExtractor extends React.Component<Props, void> {
       if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
         if (props.rgb) {
           buffer.push(swatches[swatch].getRgb());
-        } else if (props.hsl) {
-          buffer.push(swatches[swatch].getHsl());
         } else {
           buffer.push(swatches[swatch].getHex());
         }

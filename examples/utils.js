@@ -1,7 +1,7 @@
 import React from "react";
 
 export const IMAGE =
-  "https://images.unsplash.com/photo-1525489196064-0752fa4e16f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d39007f42b1568e412a65313cdfdc63b&auto=format&fit=crop&w=1350&q=80";
+  "https://images.unsplash.com/photo-1535089894977-83d4c8854f62?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0e70b451b32ef8730ad0620338ff4e49&auto=format&fit=crop&w=754&q=80";
 
 export const IMAGE_STYLES = { width: 500, height: 500 };
 
