@@ -1,0 +1,16 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/
+<PROJECT_ROOT>/node_modules/node-vibrant
+<PROJECT_ROOT>/dist
+<PROJECT_ROOT>/.cache
+
+[include]
+<PROJECT_ROOT>/src
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
