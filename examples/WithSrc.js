@@ -1,27 +1,14 @@
 import React from "react";
-import ColorExtractor from "../src/ColorExtractor";
 
-const IMAGE =
-  "https://images.unsplash.com/photo-1525489196064-0752fa4e16f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d39007f42b1568e412a65313cdfdc63b&auto=format&fit=crop&w=1350&q=80";
+import { ColorExtractor } from "../build/react-color-extractor";
 
-const IMAGE_STYLES = { width: 500, height: 500 };
+import { IMAGE, IMAGE_STYLES, SWATCHES_STYLES, Swatches } from "./utils";
 
-const SWATCHES_STYLES = {
-  marginTop: 20,
-  display: "grid",
-  gridTemplateColumns: "repeat(12, 1fr)",
-  gridGap: "2px"
-};
-
-const Swatches = props => (
-  <div style={SWATCHES_STYLES}>{props.renderSwatches("rgb")}</div>
-);
-
-const WithSource = props => (
+const Extractor = props => (
   <ColorExtractor src={IMAGE} getColors={props.getColors} />
 );
 
-class App extends React.Component {
+export class WithSource extends React.Component {
   state = { colors: [] };
 
   renderSwatches = type => {
@@ -50,7 +37,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <WithSource getColors={this.getColors} />
+        <Extractor getColors={this.getColors} />
         <Swatches renderSwatches={this.renderSwatches} />
       </React.Fragment>
     );
