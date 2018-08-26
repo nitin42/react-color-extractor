@@ -1,0 +1,7 @@
+node_modules
+public
+.cache
+.vscode
+build
+dist
+yarn-error.log
