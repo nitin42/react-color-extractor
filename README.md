@@ -37,9 +37,7 @@ import React from "react";
 
 import { ColorExtractor } from "react-color-extractor";
 
-const IMAGE_ONE = "https://i.imgur.com/OCyjHNF.jpg";
-
-const IMAGE = IMAGE_ONE;
+const IMAGE = "https://i.imgur.com/OCyjHNF.jpg";
 
 const IMAGE_STYLES = { width: 700, height: 500 };
 
