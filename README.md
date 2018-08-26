@@ -1,9 +1,90 @@
-# react-color-extractor
+**Work in progress**
 
-A React component which extracts colors from an image
+# react-color-extractor
 
 <p align="center">
   <img src="./assets/color-extractor.gif" />
 </p>
 
 > The images were taken from [Unsplash](https://unsplash.com/) ❤️
+
+## What ?
+
+`react-color-extractor` is a React component that extracts colors from an image.
+
+## Motivation ?
+
+This is one of the tools that I am using in creative coding. I was learning color theory and wanted a React based library to extract a collection of swatches from an image. The extracted colors then can be used to create interesting gradient patterns, [loading designs](https://generative-design.surge.sh) or crafting a symmetric color scheme across a system.
+
+## Install
+
+```
+npm install react-color-extractor
+```
+
+or if you use `yarn`
+
+```
+yarn add react-color-extractor
+```
+
+**This package also depends on React, so make sure you've it installed.**
+
+## Usage
+
+```js
+import React from "react";
+
+import { ColorExtractor } from "react-color-extractor";
+
+const IMAGE_ONE = "https://i.imgur.com/OCyjHNF.jpg";
+
+const IMAGE = IMAGE_ONE;
+
+const IMAGE_STYLES = { width: 700, height: 500 };
+
+const SWATCHES_STYLES = {
+  marginTop: 20,
+  display: "flex",
+  justifyContent: "center"
+};
+
+class App extends React.Component {
+  state = { colors: [] };
+
+  renderSwatches = () => {
+    const { colors } = this.state;
+
+    return colors.map((color, id) => {
+      return (
+        <div
+          key={id}
+          style={{
+            backgroundColor: color,
+            width: 100,
+            height: 100
+          }}
+        />
+      );
+    });
+  };
+
+  getColors = ({ colors }) =>
+    this.setState(state => ({ colors: [...state.colors, ...colors] }));
+
+  render() {
+    return (
+      <div>
+        <ColorExtractor getColors={this.getColors}>
+          <img src={IMAGE} style={IMAGE_STYLES} />
+        </ColorExtractor>
+        <div style={SWATCHES_STYLES}>{this.renderSwatches()}</div>
+      </div>
+    );
+  }
+}
+```
+
+Checkout the demo on CodeSandbox
+
+[![Edit k3wj33kzw3](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/k3wj33kzw3)
