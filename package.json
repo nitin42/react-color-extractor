@@ -1,42 +1,42 @@
 {
-	"name": "react-color-extractor",
-	"version": "0.1.0",
-	"description": "A React component which extracts colors from an image",
-	"main": "src/index.js",
-	"repository": "https://github.com/nitin42/react-color-extractor",
-	"author": "Nitin <tulswani19@gmail.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"babel-core": "^6.26.3",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
-		"flow-bin": "^0.79.1",
-		"husky": "^0.14.3",
-		"lint-staged": "^7.2.2",
-		"parcel-bundler": "^1.9.7",
-		"prettier": "^1.14.2",
-		"react": "^16.4.2",
-		"react-dom": "^16.4.2",
-		"rollup": "^0.65.0"
-	},
-	"dependencies": {
-		"node-vibrant": "^3.0.0",
-		"prop-types": "^15.6.2"
-	},
-	"scripts": {
-		"start": "parcel ./public/index.html"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.{js,json,css,md}": [
-			"./node_modules/.bin/prettier --write --no-semi --single-quote",
-			"git add"
-		]
-	}
+  "name": "react-color-extractor",
+  "version": "0.1.0",
+  "description": "A React component which extracts colors from an image",
+  "main": "src/index.js",
+  "repository": "https://github.com/nitin42/react-color-extractor",
+  "author": "Nitin <tulswani19@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "flow-bin": "^0.79.1",
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^7.2.2",
+    "parcel-bundler": "^1.9.7",
+    "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "rollup": "^0.65.0"
+  },
+  "dependencies": {
+    "node-vibrant": "^3.0.0",
+    "prop-types": "^15.6.2"
+  },
+  "scripts": {
+    "start": "parcel ./public/index.html"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
