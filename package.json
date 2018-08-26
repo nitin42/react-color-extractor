@@ -22,8 +22,7 @@
     "rollup": "^0.65.0"
   },
   "dependencies": {
-    "node-vibrant": "^3.0.0",
-    "prop-types": "^15.6.2"
+    "node-vibrant": "^3.0.0"
   },
   "scripts": {
     "start": "parcel ./public/index.html"
