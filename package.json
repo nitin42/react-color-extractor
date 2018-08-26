@@ -21,9 +21,18 @@
 		"rollup": "^0.65.0"
 	},
 	"dependencies": {
-		"node-vibrant": "^3.0.0"
+		"node-vibrant": "^3.0.0",
+		"prop-types": "^15.6.2"
 	},
 	"scripts": {
 		"start": "parcel ./public/index.html"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,json,css,md}": ["./node_modules/.bin/prettier --write --no-semi --single-quote", "git add"]
 	}
 }

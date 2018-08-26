@@ -4,31 +4,52 @@ import ReactDOM from 'react-dom'
 import ColorExtractor from './ColorExtractor'
 
 const IMAGE =
-	'https://images.unsplash.com/photo-1534971119865-7210cc8b6872?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fa639905b4d8049d11e83479c0ed6720&auto=format&fit=crop&w=1050&q=80'
+	'https://images.unsplash.com/photo-1535014973233-20466f8cad6d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e6270104c4af68bd24506060398728de&auto=format&fit=crop&w=634&q=80'
+
+const IMAGE_STYLES = { width: 500, height: 500 }
+
+const SWATCHES_STYLES = { marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridGap: '2px' }
+
+const Swatches = props => <div style={SWATCHES_STYLES}>{props.renderSwatches('rgb')}</div>
 
 class App extends React.Component {
 	state = { colors: [] }
 
-	renderSwatches = () => {
+	renderSwatches = type => {
 		const { colors } = this.state
 
 		return colors.map((color, id) => {
-			return <div id={id++} style={{ backgroundColor: color, width: 100, height: 100 }} />
+			return (
+				<div
+					key={id++}
+					style={{
+						backgroundColor:
+							Array.isArray(color) && type === 'rgb' ? `rgb(${color[0]}, ${color[1]}, ${color[2]})` : color,
+						width: 100,
+						height: 100,
+					}}
+				/>
+			)
 		})
 	}
+
+	getColors = ({ colors }) => this.setState(state => ({ colors: [...state.colors, ...colors] }))
 
 	render() {
 		return (
 			<React.Fragment>
-				<ColorExtractor
-					src="image"
-					getColors={({ colors }) => this.setState(state => ({ colors: [...state.colors, ...colors] }))}
-				>
-					<img id="image" src={IMAGE} crossOrigin="anonymous" style={{ width: 500, height: 500 }} />
+				{/* <img id="image" src={IMAGE} style={IMAGE_STYLES} />
+				<ColorExtractor imgId="image" rgb getColors={this.getColors} /> */}
+
+				<ColorExtractor name="container" src="image" rgb getColors={this.getColors}>
+					<img id="image" src={IMAGE} style={IMAGE_STYLES} />
 				</ColorExtractor>
-				<div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridGap: '2px' }}>
-					{this.renderSwatches()}
-				</div>
+				{/* <ColorExtractor
+					src="https://images.unsplash.com/photo-1534807265563-59a97c3a35a0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=477cc8cf0c5fbcf9faab2c6523e4f508&auto=format&fit=crop&w=1576&q=80"
+					rgb
+					getColors={this.getColors}
+				/> */}
+				<Swatches renderSwatches={this.renderSwatches} />
 			</React.Fragment>
 		)
 	}
