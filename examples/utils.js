@@ -9,7 +9,7 @@ const two =
 const three =
   "https://images.unsplash.com/photo-1520633946251-dcf52b0276b9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=686e5ce82ff415317e8cc11989728517&auto=format&fit=crop&w=1350&q=80";
 
-export const IMAGE = one;
+export const IMAGE = three;
 
 export const IMAGE_STYLES = { width: 500, height: 500 };
 
