@@ -2,7 +2,7 @@
 
 A React component which extracts colors from an image
 
-<p>
+<p align="center">
   <img src="./assets/color-extractor.gif" />
 </p>
 
