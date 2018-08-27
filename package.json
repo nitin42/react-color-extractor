@@ -29,15 +29,17 @@
     "rollup-plugin-uglify": "^4.0.0"
   },
   "dependencies": {
+    "emotion": "^9.2.6",
     "node-vibrant": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.3.2"
   },
   "scripts": {
-    "start": "parcel ./public/index.html",
+    "start": "parcel ./public/index.html -p 3000",
     "build": "rollup -c",
-    "flow": "flow"
+    "flow": "flow",
+    "start:website": "parcel ./website/index.html"
   },
   "husky": {
     "hooks": {

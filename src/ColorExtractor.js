@@ -3,11 +3,8 @@
 import * as React from "react";
 import Vibrant from "node-vibrant";
 
-// Image can also be served remotely (CORS enabled server)
-type HTTPSLink = string;
-
-// Or it can also be an image element, or null (default)
-type Image = HTMLElement | HTTPSLink | null;
+// Image input can be a html element (image tag), an image path (remote or local) or a blob url
+type Image = HTMLElement | string | Blob;
 
 // ColorExtractor component props
 type Props = {
@@ -17,40 +14,11 @@ type Props = {
   getColors: (colors: Array<string | number>) => {},
   // Color format RGB
   rgb: boolean,
-  // Get the image ref through selector id
-  imgId: string,
-  // Get the image ref through selector className
-  cName: string,
-  // Directly extract the colors from the src
+  // Directly extract the colors from the image provided via `src` prop
   src: string,
-  // Optional wrap the image from which the colors will be extracted
+  // If the image element is the direct children of <ColorExtractor />
   children?: React.Node
 };
-
-// ColorExtractor - A React component which extracts the colors (hex / rgb / hsl) from an image. The image can be a local or served with CORS enabled.
-
-// Example 1 - With image element as a children
-
-/**
- * <ColorExtractor name="container-one" style={{ ... }} getColors={({ colors }) => {}}>
- *   <img src="..." width="..." height="..." />
- * </ColorExtractor>
- */
-
-// Example 2 - With image as source prop
-
-/**
- * <ColorExtractor src="..." getColors={({ colors }) => {}} rgb />
- */
-
-// Example 3 - With image somewhere in the DOM tree
-
-/**
- * <div>
- *   <img id="" src="..." />
- *   <ColorExtractor imgId="..." getColors={({ colors }) => {}} rgb />
- * </div>
- */
 
 class ColorExtractor extends React.Component<Props, void> {
   static defaultProps = {
@@ -58,46 +26,40 @@ class ColorExtractor extends React.Component<Props, void> {
     getColors: (colors: Array<number | string>) => {},
     rgb: false,
     hex: true,
-    imgId: null,
-    src: null,
-    cName: null
+    src: null
   };
 
   componentDidMount() {
-    let image = null;
-
-    // Check if the src is path or an image element. If it's an image element, directly
-    // use Vibrant constructor else if it's an image path, create an hidden image element and extract colors,
-    // or, if it's an image element or id or className, get the element ref.
-
-    if (this.props.imgId) {
-      image = document.getElementById(this.props.imgId);
-
-      if (!image) {
-        throw new Error(
-          `Couldn't find the image with the id "${
-            this.props.imgId
-          }" in the dom tree.`
-        );
-      }
-
-      if (image.tagName !== "IMG") {
-        throw new Error(
-          `Expected the element with id "${this.props.imgId}" to be an image.`
-        );
-      }
-    } else if (this.props.children) {
-      // We assume the children count is one, so we directly access the props
-      // $FlowFixMe
-      image = this.props.children.props.src;
-    } else if (this.props.src) {
-      image = this.props.src;
-    } else if (this.props.cName) {
-      image = document.querySelector(`.${this.props.cName}`);
-    }
-
-    this.parseImage(image, this.props);
+    this.processImage();
   }
+
+  componentDidUpdate(props: Props) {
+    if (props.src !== this.props.src && this.props.src.length > 0) {
+      this.handleImgSrc(this.props);
+      // $FlowFixMe
+    } else if (
+      this.props.children &&
+      props.children.props.src !== this.props.children.props.src
+    ) {
+      this.handleChildren(this.props);
+    }
+  }
+
+  processImage = () => {
+    const { props } = this;
+
+    if (props.children) {
+      // If the image element is direct children of ColorExtractor component, intercept the children and use the `src` property
+      this.handleChildren(props);
+    } else if (
+      props.src &&
+      typeof props.src === "string" &&
+      props.src.length > 0
+    ) {
+      // if the image is provided via src prop
+      this.handleImgSrc(props);
+    }
+  };
 
   // Parse the image and extract the colors
   parseImage = (image: Image, props: Props) => {
@@ -108,8 +70,35 @@ class ColorExtractor extends React.Component<Props, void> {
       )
       .catch(error => {
         if (error) {
-          // This error is mainly due to CORS issue. So we retry again by using the default image class, but if still there is any error, we bail out there
+          // This error is mainly due to CORS issue. So we retry again by using the default image class. But if still there is any error, we bail out!
           this.useDefaultImageClass(image, props);
+        }
+      });
+  };
+
+  useDefaultImageClass = (image: Image, props: Props) => {
+    new Vibrant.DefaultOpts.ImageClass()
+      // $FlowFixMe
+      .load(image.src)
+      .then(data => {
+        if (data.image) {
+          const colors = [];
+
+          Vibrant.from(data.image)
+            .getSwatches()
+            .then(swatches =>
+              props.getColors(this.getColorsFromSwatches(swatches, props))
+            )
+            .catch(error => {
+              if (error) {
+                props.onError(error);
+              }
+            });
+        }
+      })
+      .catch(error => {
+        if (error) {
+          props.onError(error);
         }
       });
   };
@@ -131,25 +120,13 @@ class ColorExtractor extends React.Component<Props, void> {
     return buffer;
   };
 
-  useDefaultImageClass = (image: Image, props: Props) => {
-    // $FlowFixMe
-    new Vibrant.DefaultOpts.ImageClass().load(image.src).then(data => {
-      if (data.image) {
-        const colors = [];
+  // Handler for parsing the image given the image url via `src` prop
+  handleImgSrc = (props: Props) => this.parseImage(props.src, props);
 
-        Vibrant.from(data.image)
-          .getSwatches()
-          .then(swatches =>
-            props.getColors(this.getColorsFromSwatches(swatches, props))
-          )
-          .catch(error => {
-            if (error) {
-              props.onError(error);
-            }
-          });
-      }
-    });
-  };
+  // Handler for parsing the image given the image as direct children of ColorExtractor component
+  // $FlowFixMe
+  handleChildren = (props: Props) =>
+    this.parseImage(props.children.props.src, props);
 
   render(): ?React.Node {
     const length = React.Children.count(this.props.children);

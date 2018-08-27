@@ -1,3 +1,5 @@
+WORK IN PROGRESS
+
 # react-color-extractor
 
 ![size](https://img.shields.io/badge/size-2.7KB-green.svg)
