@@ -1,5 +1,3 @@
-**Work in progress**
-
 # react-color-extractor
 
 <p align="center">
@@ -204,3 +202,27 @@ This will log colors in `rgb` format
 
 <ColorExtractor cName="cat-image" getColors={colors => console.log(colors)} />
 ```
+
+## Contributing
+
+If you like to contribute to this project, then follow the below instructions to setup the project locally on your machine.
+
+```
+git clone https://github.com/<your_username_here>/react-color-extractor
+
+cd react-color-extractor
+
+yarn
+```
+
+### Type checking
+
+Run flow type checker using `yarn flow`
+
+### Start local server
+
+Use command `yarn start` to start the development server.
+
+### Building the source code
+
+Run `yarn build` to build the source code.
