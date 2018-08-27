@@ -63,16 +63,6 @@ class ColorExtractor extends React.Component<Props, void> {
     cName: null
   };
 
-  // Utilities for dealing with color conversions
-
-  static rgbToHex = Vibrant.Util.rgbToHex;
-
-  static hexToRgb = Vibrant.Util.hexToRgb;
-
-  static rgbToHsl = Vibrant.Util.rgbToHsl;
-
-  static hslToRgb = Vibrant.Util.hslToRgb;
-
   componentDidMount() {
     let image = null;
 
@@ -184,5 +174,16 @@ class ColorExtractor extends React.Component<Props, void> {
     }
   }
 }
+
+// Utilities for color conversions
+
+// Convert RGB to HEX format
+export const rgbToHex = Vibrant.Util.rgbToHex;
+// Convert HEX to RGB
+export const hexToRgb = Vibrant.Util.hexToRgb;
+// Convert RGB to HSL
+export const rgbToHsl = Vibrant.Util.rgbToHsl;
+// Convert HSL to RGB
+export const hslToRgb = Vibrant.Util.hslToRgb;
 
 export default ColorExtractor;

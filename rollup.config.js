@@ -1,6 +1,7 @@
 import babel from "rollup-plugin-babel";
 import { uglify } from "rollup-plugin-uglify";
 import replace from "rollup-plugin-replace";
+import filesize from "rollup-plugin-filesize";
 
 import pkg from "./package.json";
 
@@ -31,6 +32,7 @@ const createConfig = ({ output, min = false, env } = {}) => ({
     ...Object.keys(pkg.peerDependencies || {})
   ]),
   plugins: [
+    filesize(),
     babel({ plugins: ["external-helpers"] }),
     env && replace({ "process.env.NODE_ENV": JSON.stringify(env) }),
     min && uglify()

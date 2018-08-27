@@ -1,3 +1,8 @@
-import ColorExtractor from "./ColorExtractor";
+import ColorExtractor, {
+  rgbToHex,
+  hexToRgb,
+  rgbToHsl,
+  hslToRgb
+} from "./ColorExtractor";
 
-export { ColorExtractor };
+export { ColorExtractor, rgbToHex, hexToRgb, rgbToHsl, hslToRgb };
