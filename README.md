@@ -95,7 +95,7 @@ Check out the [`examples`](./examples) folder.
 
 ## Usage
 
-`react-color-extractor` can be used in three different ways.
+`react-color-extractor` can be used in two different ways.
 
 - **With image element as children**
 
@@ -105,27 +105,13 @@ Check out the [`examples`](./examples) folder.
 </ColorExtractor>
 ```
 
-- **Passing a local or remote image via `src` prop**
+- **Passing a local or remote image, or a blob url via `src` prop**
 
 ```js
-<ColorExtractor src="https://..." getColors={colors => console.log(colors)} />
-```
-
-- **With image element somewhere in the DOM tree**
-
-Specify the selector (id or class) of the image element present somewhere in the DOM tree.
-
-```js
-render() {
-  return (
-    <div>
-      <h1>React Color Extractor</h1>
-      <p>Color extractor components</p>
-      <img id="some-image-id" src="https://..." alt="..." style={{ ... }} />
-      <ColorExtractor imgId="some-image-id" getColors={colors => console.log(colors)} />
-    </div>
-  )
-}
+<ColorExtractor
+  src="<image-url-or-blob>"
+  getColors={colors => console.log(colors)}
+/>
 ```
 
 ## API
@@ -161,7 +147,7 @@ This will log colors in `rgb` format
 `onError` callback is invoked if there is any issue with processing the image.
 
 ```js
-<ColorExtractor onError={error => this.setState({ hasError: true, error})}>
+<ColorExtractor onError={error => this.setState({ hasError: true , msg: error })}>
 ```
 
 #### `src`
@@ -175,30 +161,6 @@ This will log colors in `rgb` format
   src="https://i.imgur.com/OCyjHNF.jpg"
   getColors={colors => console.log(colors)}
 />
-```
-
-#### `imgId`
-
-**`type: string`**
-
-`imgId` prop accepts a selector id of the image element
-
-```js
-<img id="image-id" src="https://i.imgur.com/OCyjHNF.jpg" />
-
-<ColorExtractor imgId="image-id" getColors={colors => console.log(colors)} />
-```
-
-#### `cName`
-
-**`type: string`**
-
-`cName` prop accepts a selector id of the image element
-
-```js
-<img className="cat-image" src="https://i.imgur.com/OCyjHNF.jpg" />
-
-<ColorExtractor cName="cat-image" getColors={colors => console.log(colors)} />
 ```
 
 ## Contributing
