@@ -6,11 +6,11 @@
 
 > The images were taken from [Unsplash](https://unsplash.com/) ❤️
 
-## What ?
+## What
 
 `react-color-extractor` is a React component that extracts colors from an image.
 
-## Motivation ?
+## Motivation
 
 This is one of the tools that I am using in creative coding. I was learning color theory and wanted a React based library to extract a collection of swatches from an image. The extracted colors then can be used to create interesting gradient patterns, [loading designs](https://generative-design.surge.sh) or crafting a symmetric color scheme across a system.
 
