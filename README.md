@@ -134,11 +134,11 @@ render() {
 
 ## API
 
-### `ColorExtractor` props
+### `<ColorExtractor />` props
 
 #### `getColors`
 
-**`type: (colors: Array<number | string>) => void`**
+**`(colors: Array<number | string>) => void`**
 
 `getColors` callback is invoked with an array of colors, either in hex or rgb format once the image is done processing. Use this callback to update the state with the colors array
 
@@ -160,7 +160,7 @@ This will log colors in `rgb` format
 
 #### `onError`
 
-**`type: (error: Object) => void`**
+**`(error: Object) => void`**
 
 `onError` callback is invoked if there is any issue with processing the image other than CORS or invalid format.
 
