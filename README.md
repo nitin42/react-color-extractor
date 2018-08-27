@@ -91,12 +91,6 @@ Checkout the demo on CodeSandbox
 
 ## Examples
 
-- [Basic example](https://codesandbox.io/s/k3wj33kzw3)
-
-- [Image element as children](https://codesandbox.io/s/r08093x2kp)
-
-- [Passing image using `src` prop](https://codesandbox.io/s/8kojpyzo4j)
-
 Check out the [`examples`](./examples) folder.
 
 ## Usage

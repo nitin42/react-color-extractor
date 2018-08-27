@@ -12,14 +12,15 @@ type Props = {
   onError: (err: Object) => void,
   // Main callback which is invoked with all the colors extracted from the image (hex, rgb or hsl)
   getColors: (colors: Array<string | number>) => {},
-  // Color format RGB
+  // Output colors in format RGB
   rgb: boolean,
-  // Directly extract the colors from the image provided via `src` prop
+  // Extract colors from the image provided via `src` prop
   src: string,
-  // If the image element is the direct children of <ColorExtractor />
   children?: React.Node
 };
 
+// This component takes a src prop (image source, can be a blob or CORS enabled image path) or intercepts it's children to get image element,
+// and parses the image using node-vibrant and invokes the prop callback with an array of colors.
 class ColorExtractor extends React.Component<Props, void> {
   static defaultProps = {
     onError: (err: Object) => {},
@@ -34,14 +35,21 @@ class ColorExtractor extends React.Component<Props, void> {
   }
 
   componentDidUpdate(props: Props) {
-    if (props.src !== this.props.src && this.props.src.length > 0) {
-      this.handleImgSrc(this.props);
-      // $FlowFixMe
+    // Check whether the src image or image element is new. If it's a new url, parse the image again!
+
+    if (
+      props.src !== this.props.src &&
+      typeof this.props.src === "string" &&
+      this.props.src.length > 0
+    ) {
+      this.parseImage(this.props.src, this.props);
     } else if (
       this.props.children &&
+      // $FlowFixMe
       props.children.props.src !== this.props.children.props.src
     ) {
-      this.handleChildren(this.props);
+      // $FlowFixMe
+      this.parseImage(this.props.children.props.src, this.props);
     }
   }
 
@@ -50,14 +58,15 @@ class ColorExtractor extends React.Component<Props, void> {
 
     if (props.children) {
       // If the image element is direct children of ColorExtractor component, intercept the children and use the `src` property
-      this.handleChildren(props);
+      // $FlowFixMe
+      this.parseImage(props.children.props.src, props);
     } else if (
       props.src &&
       typeof props.src === "string" &&
       props.src.length > 0
     ) {
       // if the image is provided via src prop
-      this.handleImgSrc(props);
+      this.parseImage(props.src, props);
     }
   };
 
@@ -120,18 +129,10 @@ class ColorExtractor extends React.Component<Props, void> {
     return buffer;
   };
 
-  // Handler for parsing the image given the image url via `src` prop
-  handleImgSrc = (props: Props) => this.parseImage(props.src, props);
-
-  // Handler for parsing the image given the image as direct children of ColorExtractor component
-  // $FlowFixMe
-  handleChildren = (props: Props) =>
-    this.parseImage(props.children.props.src, props);
-
   render(): ?React.Node {
     const length = React.Children.count(this.props.children);
 
-    // We don't handle multiple images at the moment, sorry!
+    // We don't handle multiple images at the moment or custom components, sorry!
     if (length > 1) {
       throw new Error("Expected only one image element.");
     } else if (length === 1) {
