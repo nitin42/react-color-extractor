@@ -67,7 +67,7 @@ class App extends React.Component {
     });
   };
 
-  getColors = ({ colors }) =>
+  getColors = colors =>
     this.setState(state => ({ colors: [...state.colors, ...colors] }));
 
   render() {

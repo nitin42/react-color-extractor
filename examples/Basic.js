@@ -20,7 +20,7 @@ const Extractor = props => (
 export class WithoutChildren extends React.Component {
   state = { colors: [] };
 
-  getColors = ({ colors }) =>
+  getColors = colors =>
     this.setState(state => ({ colors: [...state.colors, ...colors] }));
 
   render() {

@@ -14,7 +14,7 @@ type Props = {
   // Invoked when there is an error other than CORS or DOM
   onError: (err: Object) => void,
   // Main callback which is invoked with all the colors extracted from the image (hex, rgb or hsl)
-  getColors: (data: { colors: Array<string | number> }) => {},
+  getColors: (colors: Array<string | number>) => {},
   // Color format RGB
   rgb: boolean,
   // Get the image ref through selector id
@@ -55,7 +55,7 @@ type Props = {
 class ColorExtractor extends React.Component<Props, void> {
   static defaultProps = {
     onError: (err: Object) => {},
-    getColors: (data: { colors: Array<number | string> }) => {},
+    getColors: (colors: Array<number | string>) => {},
     rgb: false,
     hex: true,
     imgId: null,
@@ -114,7 +114,7 @@ class ColorExtractor extends React.Component<Props, void> {
     Vibrant.from(image)
       .getSwatches()
       .then(swatches =>
-        props.getColors({ colors: this.getColorsFromSwatches(swatches, props) })
+        props.getColors(this.getColorsFromSwatches(swatches, props))
       )
       .catch(error => {
         if (error) {
@@ -150,9 +150,7 @@ class ColorExtractor extends React.Component<Props, void> {
         Vibrant.from(data.image)
           .getSwatches()
           .then(swatches =>
-            props.getColors({
-              colors: this.getColorsFromSwatches(swatches, props)
-            })
+            props.getColors(this.getColorsFromSwatches(swatches, props))
           )
           .catch(error => {
             if (error) {
