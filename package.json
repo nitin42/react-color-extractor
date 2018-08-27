@@ -1,6 +1,6 @@
 {
   "name": "react-color-extractor",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "description": "A React component which extracts colors from an image",
   "main": "build/react-color-extractor.js",
   "module": "build/react-color-extractor.es.js",
