@@ -30,7 +30,7 @@ yarn add react-color-extractor
 
 **This package also depends on React, so make sure you've it installed.**
 
-## Usage
+## Example
 
 ```js
 import React from "react";
@@ -86,3 +86,46 @@ class App extends React.Component {
 Checkout the demo on CodeSandbox
 
 [![Edit k3wj33kzw3](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/k3wj33kzw3)
+
+## Examples
+
+- [Basic example](./examples/Basic.js)
+
+- [Image element as children](./examples/WithChildren.js)
+
+- [Passing image using `src` prop](./examples/WithSrc.js)
+
+## Usage
+
+`react-color-extractor` can be used in three different ways.
+
+- **With image element as children**
+
+```js
+<ColorExtractor getColors={colors => console.log(colors)}>
+  <img src="..." alt="..." style={{...}} />
+</ColorExtractor>
+```
+
+- **Passing a local or remote image via `src` prop**
+
+```js
+<ColorExtractor src="https://..." getColors={colors => console.log(colors)} />
+```
+
+- **With image element somewhere in the DOM tree**
+
+Specify the selector (id or class) of the image element present somewhere in the DOM tree.
+
+```js
+render() {
+  return (
+    <div>
+      <h1>React Color Extractor</h1>
+      <p>Color extractor components</p>
+      <img id="some-image-id" src="https://..." alt="..." style={{ ... }} />
+      <ColorExtractor imgId="some-image-id" getColors={colors => console.log(colors)} />
+    </div>
+  )
+}
+```
