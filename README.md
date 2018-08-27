@@ -138,7 +138,7 @@ render() {
 
 #### `getColors`
 
-**type: (colors: Array<number | string>) => void**
+**`type: (colors: Array<number | string>) => void`**
 
 `getColors` callback is invoked with an array of colors, either in hex or rgb format once the image is done processing. Use this callback to update the state with the colors array
 
@@ -148,7 +148,7 @@ render() {
 
 #### `rgb`
 
-**type: boolean**
+**`type: boolean`**
 
 When set to `true`, it produces the color in `rgb` format. By default, colors produced are in hex format
 
@@ -160,7 +160,7 @@ This will log colors in `rgb` format
 
 #### `onError`
 
-**type: (error: Object) => void**
+**`type: (error: Object) => void`**
 
 `onError` callback is invoked if there is any issue with processing the image other than CORS or invalid format.
 
@@ -170,7 +170,7 @@ This will log colors in `rgb` format
 
 #### `src`
 
-**type: string**
+**`type: string`**
 
 `src` prop accepts a remote image url or a local image path.
 
@@ -183,22 +183,24 @@ This will log colors in `rgb` format
 
 #### `imgId`
 
-**type: string**
+**`type: string`**
 
 `imgId` prop accepts a selector id of the image element
 
 ```js
 <img id="image-id" src="https://i.imgur.com/OCyjHNF.jpg" />
+
 <ColorExtractor imgId="image-id" getColors={colors => console.log(colors)} />
 ```
 
 #### `cName`
 
-**type: string**
+**`type: string`**
 
 `cName` prop accepts a selector id of the image element
 
 ```js
 <img className="cat-image" src="https://i.imgur.com/OCyjHNF.jpg" />
+
 <ColorExtractor cName="cat-image" getColors={colors => console.log(colors)} />
 ```
