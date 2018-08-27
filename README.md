@@ -150,7 +150,7 @@ render() {
 
 **`type: boolean`**
 
-When set to `true`, it produces the color in `rgb` format. By default, colors produced are in hex format
+When set to `true`, produces the color in `rgb` format. By default, colors produced are in hex format
 
 ```js
 <ColorExtractor rgb getColors={colors => console.log(colors)} />
@@ -162,7 +162,7 @@ This will log colors in `rgb` format
 
 **`(error: Object) => void`**
 
-`onError` callback is invoked if there is any issue with processing the image other than CORS or invalid format.
+`onError` callback is invoked if there is any issue with processing the image.
 
 ```js
 <ColorExtractor onError={error => this.setState({ hasError: true, error})}>
