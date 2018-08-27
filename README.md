@@ -114,7 +114,7 @@ Check out the [`examples`](./examples) folder.
 </ColorExtractor>
 ```
 
-Check out [this](./examples/WithChildren.js)
+Check out [this](./examples/WithChildren.js) example for more information.
 
 - **Passing a local or remote image, or a blob url via `src` prop**
 
@@ -125,7 +125,7 @@ Check out [this](./examples/WithChildren.js)
 />
 ```
 
-Check out [this](./examples/WithSrc.js)
+Check out [this](./examples/WithSrc.js) example for more information.
 
 ## API
 
