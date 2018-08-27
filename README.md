@@ -1,4 +1,4 @@
-WORK IN PROGRESS
+NOT RELEASED! WORK IN PROGRESS
 
 # react-color-extractor
 
@@ -18,6 +18,14 @@ WORK IN PROGRESS
 ## Motivation
 
 This is one of the tools that I am using in creative coding. I was learning color theory and wanted a React based library to extract a collection of swatches from an image. The extracted colors then can be used to create interesting gradient patterns, [loading designs](https://generative-design.surge.sh) or crafting a symmetric color scheme across a system.
+
+## Use cases
+
+- Design systems
+
+- Creative coding
+
+- Creating advanced color pickers (upload and collect swatches)
 
 ## Install
 
@@ -106,6 +114,8 @@ Check out the [`examples`](./examples) folder.
 </ColorExtractor>
 ```
 
+Check out [this](./examples/WithChildren.js)
+
 - **Passing a local or remote image, or a blob url via `src` prop**
 
 ```js
@@ -114,6 +124,8 @@ Check out the [`examples`](./examples) folder.
   getColors={colors => console.log(colors)}
 />
 ```
+
+Check out [this](./examples/WithSrc.js)
 
 ## API
 
