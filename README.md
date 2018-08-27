@@ -9,15 +9,13 @@ NOT RELEASED! WORK IN PROGRESS
   <img src="./assets/color-extractor.gif" />
 </p>
 
-> The images were taken from [Unsplash](https://unsplash.com/) ❤️
-
 ## What
 
 `react-color-extractor` is a React component that extracts colors from an image.
 
 ## Motivation
 
-This is one of the tools that I am using in creative coding. I was learning color theory and wanted a React based library to extract a collection of swatches from an image. The extracted colors then can be used to create interesting gradient patterns, [loading designs](https://generative-design.surge.sh) or crafting a symmetric color scheme across a system.
+This is one of the tools that I am using in creative coding. I was learning color theory and wanted a React based library to extract a collection of swatches from an image. The extracted colors then can be used to create interesting gradient patterns, [loading designs](https://generative-design.surge.sh) with identical color scheme or crafting a symmetric color scheme across a system.
 
 ## Use cases
 
@@ -25,7 +23,7 @@ This is one of the tools that I am using in creative coding. I was learning colo
 
 - Creative coding
 
-- Creating advanced color pickers (upload and collect swatches)
+- Creating advanced color tools
 
 ## Install
 
@@ -45,18 +43,7 @@ yarn add react-color-extractor
 
 ```js
 import React from "react";
-
 import { ColorExtractor } from "react-color-extractor";
-
-const IMAGE = "https://i.imgur.com/OCyjHNF.jpg";
-
-const IMAGE_STYLES = { width: 700, height: 500 };
-
-const SWATCHES_STYLES = {
-  marginTop: 20,
-  display: "flex",
-  justifyContent: "center"
-};
 
 class App extends React.Component {
   state = { colors: [] };
@@ -85,9 +72,15 @@ class App extends React.Component {
     return (
       <div>
         <ColorExtractor getColors={this.getColors}>
-          <img src={IMAGE} style={IMAGE_STYLES} />
+          <img src="https://i.imgur.com/OCyjHNF.jpg";
+ style={{ width: 700, height: 500 }} />
         </ColorExtractor>
-        <div style={SWATCHES_STYLES}>{this.renderSwatches()}</div>
+        <div style={{
+  marginTop: 20,
+  display: "flex",
+  justifyContent: "center"
+};
+}>{this.renderSwatches()}</div>
       </div>
     );
   }
@@ -114,7 +107,7 @@ Check out the [`examples`](./examples) folder.
 </ColorExtractor>
 ```
 
-Check out [this](./examples/WithChildren.js) example for more information.
+Check out [this](./examples/WithChildren.js) example.
 
 - **Passing a local or remote image, or a blob url via `src` prop**
 
@@ -125,7 +118,7 @@ Check out [this](./examples/WithChildren.js) example for more information.
 />
 ```
 
-Check out [this](./examples/WithSrc.js) example for more information.
+Check out [this](./examples/WithSrc.js) example.
 
 ## API
 

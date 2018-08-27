@@ -23,7 +23,9 @@ const Image = props => (
     {props.error ? (
       <div>Invalid image path</div>
     ) : (
-      <img id="image-rce" src={props.image} style={IMAGE_STYLES} />
+      <ColorExtractor getColors={props.getColors} onError={props.onError}>
+        <img src={props.image} style={IMAGE_STYLES} />
+      </ColorExtractor>
     )}
   </div>
 );
@@ -132,7 +134,7 @@ class App extends React.Component {
   state = {
     image: IMAGE,
     colors: [],
-    hasError: true
+    hasError: false
   };
 
   componentDidMount() {
@@ -176,10 +178,6 @@ class App extends React.Component {
         <Image
           error={this.state.hasError}
           image={this.state.image}
-          getColors={this.getColors}
-        />
-        <ColorExtractor
-          src={this.state.image}
           getColors={this.getColors}
           onError={error => this.setState({ hasError: true })}
         />
