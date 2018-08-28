@@ -129,7 +129,7 @@ Check out [this](./examples/WithSrc.js) example.
 
 #### `getColors`
 
-**`(colors: Array<number | string>) => void`**
+**`(colors: Array<Array<number> | string>) => void`**
 
 `getColors` callback is invoked with an array of colors, either in hex or rgb format once the image is done processing. Use this callback to update the state with the colors array
 
