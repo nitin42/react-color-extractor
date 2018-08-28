@@ -42,14 +42,14 @@ yarn add react-color-extractor
 ## Example
 
 ```js
-import React from "react";
-import { ColorExtractor } from "react-color-extractor";
+import React from 'react'
+import { ColorExtractor } from 'react-color-extractor'
 
 class App extends React.Component {
-  state = { colors: [] };
+  state = { colors: [] }
 
   renderSwatches = () => {
-    const { colors } = this.state;
+    const { colors } = this.state
 
     return colors.map((color, id) => {
       return (
@@ -61,28 +61,33 @@ class App extends React.Component {
             height: 100
           }}
         />
-      );
-    });
-  };
+      )
+    })
+  }
 
   getColors = colors =>
-    this.setState(state => ({ colors: [...state.colors, ...colors] }));
+    this.setState(state => ({ colors: [...state.colors, ...colors] }))
 
   render() {
     return (
       <div>
         <ColorExtractor getColors={this.getColors}>
-          <img src="https://i.imgur.com/OCyjHNF.jpg";
- style={{ width: 700, height: 500 }} />
+          <img
+            src="https://i.imgur.com/OCyjHNF.jpg"
+            style={{ width: 700, height: 500 }}
+          />
         </ColorExtractor>
-        <div style={{
-  marginTop: 20,
-  display: "flex",
-  justifyContent: "center"
-};
-}>{this.renderSwatches()}</div>
+        <div
+          style={{
+            marginTop: 20,
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          {this.renderSwatches()}
+        </div>
       </div>
-    );
+    )
   }
 }
 ```
