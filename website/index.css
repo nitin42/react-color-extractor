@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .image-container {
@@ -27,7 +27,7 @@ body {
   width: 600px;
   font-size: 16px;
   border: 0.5px solid #4f4f4f;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 .search-input:focus {
@@ -38,11 +38,8 @@ body {
   padding: 10px;
   font-size: 12px;
   border: 0.5px solid black;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
-}
-
-.button:hover {
   background: black;
   color: white;
 }

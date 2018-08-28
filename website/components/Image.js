@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ColorExtractor } from '../../src'
+import { ColorExtractor } from '../../build/react-color-extractor.min.js'
 
 const IMAGE_STYLES = {
   width: 700,
