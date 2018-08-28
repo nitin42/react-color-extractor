@@ -29,7 +29,6 @@
     "rollup-plugin-uglify": "^4.0.0"
   },
   "dependencies": {
-    "emotion": "^9.2.6",
     "node-vibrant": "^3.0.0"
   },
   "peerDependencies": {

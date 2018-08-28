@@ -10,10 +10,6 @@ import {
   renderSwatches
 } from "./utils";
 
-const Extractor = props => (
-  <ColorExtractor src={IMAGE} getColors={props.getColors} />
-);
-
 export class WithSource extends React.Component {
   state = { colors: [] };
 
@@ -23,7 +19,7 @@ export class WithSource extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Extractor getColors={this.getColors} />
+        <ColorExtractor src={IMAGE} getColors={this.getColors} />
         <Swatches colors={this.state.colors} renderSwatches={renderSwatches} />
       </React.Fragment>
     );

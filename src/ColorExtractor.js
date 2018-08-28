@@ -9,9 +9,11 @@ import type { Image, Props } from "./types";
 // and parses the image using node-vibrant, and finally invokes the prop callback with an array of colors.
 class ColorExtractor extends React.Component<Props, void> {
   static defaultProps = {
-    onError: (err: Object) => {},
-    getColors: (colors: Array<number | string>) => {},
+    onError: (error: Object) => {},
+    // Colors can be in vec3 format (rgb or hsl) or in hex format
+    getColors: (colors: Array<Array<number> | string>) => {},
     rgb: false,
+    hsl: true,
     hex: true,
     src: null
   };
@@ -45,7 +47,9 @@ class ColorExtractor extends React.Component<Props, void> {
     if (this.props.children) {
       // If the image element is direct children of ColorExtractor component, intercept the children and use the `src` property
       // $FlowFixMe
-      this.parseImage(this.props.children.props.src, this.props);
+      if (this.props.children.props.src) {
+        this.parseImage(this.props.children.props.src, this.props);
+      }
     } else if (
       this.props.src &&
       typeof this.props.src === "string" &&
