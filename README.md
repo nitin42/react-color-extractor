@@ -1,9 +1,7 @@
-NOT RELEASED! WORK IN PROGRESS
-
 # react-color-extractor
 
-![size](https://img.shields.io/badge/size-2.7KB-green.svg)
-![version](https://img.shields.io/badge/version-1.0.0-green.svg)
+![size](https://img.shields.io/badge/size-2.8KB-green.svg)
+![version](https://img.shields.io/badge/version-1.1.1-green.svg)
 
 <p align="center">
   <img src="./assets/Demo.gif" />
@@ -118,7 +116,7 @@ Check out [this](./examples/WithChildren.js) example.
 
 ```js
 <ColorExtractor
-  src="<image-url-or-blob>"
+  src="<local-or-remote-image-url-or-blob-url>"
   getColors={colors => console.log(colors)}
 />
 ```
@@ -136,7 +134,7 @@ Check out [this](./examples/WithSrc.js) example.
 `getColors` callback is invoked with an array of colors, either in hex or rgb format once the image is done processing. Use this callback to update the state with the colors array
 
 ```js
-<ColorExtractor getColors={colors => console.log(colors)} />
+<ColorExtractor getColors={colors => this.setState({ colors: colors })} />
 ```
 
 #### `rgb`
@@ -165,7 +163,7 @@ This will log colors in `rgb` format
 
 **`type: string`**
 
-`src` prop accepts a remote image url or a local image path.
+`src` prop accepts a remote or local image url, or a blob url.
 
 ```js
 <ColorExtractor
@@ -190,10 +188,6 @@ yarn
 
 Run flow type checker using `yarn flow`
 
-### Start local server
-
-Use command `yarn start` to start the development server.
-
 ### Building the source code
 
-Run `yarn build` to build the source code.
+Run `yarn build:component` to build the source code.

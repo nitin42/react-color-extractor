@@ -1,18 +1,11 @@
-import React from "react";
-
-const SWATCHES_STYLES = {
-  marginTop: 20,
-  display: "flex",
-  justifyContent: "center",
-  overflowX: "auto"
-};
+import React from 'react'
 
 const renderSwatches = (type, colors) => {
   return colors.map((color, id) => {
     const normalizeColorValue =
-      Array.isArray(color) && type === "rgb"
+      Array.isArray(color) && type === 'rgb'
         ? `rgb(${color[0]}, ${color[1]}, ${color[2]})`
-        : color;
+        : color
 
     return (
       <div key={id++} style={{ color }}>
@@ -23,12 +16,14 @@ const renderSwatches = (type, colors) => {
             color: normalizeColorValue
           }}
         />
-        <div className="center-content">{color}</div>
+        <div className="center-content hex-codes">{color}</div>
       </div>
-    );
-  });
-};
+    )
+  })
+}
 
 export const Swatches = props => (
-  <div style={SWATCHES_STYLES}>{renderSwatches("hex", props.colors)}</div>
-);
+  <div className="display-swatches" style={{ marginTop: 20 }}>
+    {renderSwatches('hex', props.colors)}
+  </div>
+)

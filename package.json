@@ -1,6 +1,6 @@
 {
   "name": "react-color-extractor",
-  "version": "1.0.0-beta.0",
+  "version": "1.1.1",
   "description": "A React component which extracts colors from an image",
   "main": "build/react-color-extractor.js",
   "module": "build/react-color-extractor.es.js",
@@ -35,10 +35,11 @@
     "react": "^16.3.2"
   },
   "scripts": {
-    "start": "parcel ./public/index.html -p 3000",
-    "build": "rollup -c",
+    "build:component": "NODE_ENV=production rollup -c",
     "flow": "flow",
-    "start:website": "parcel ./website/index.html"
+    "start": "parcel ./public/index.html",
+    "build:website": "NODE_ENV=production parcel build ./website/index.js",
+    "deploy": "yarn build:website && surge"
   },
   "husky": {
     "hooks": {

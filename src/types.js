@@ -1,9 +1,9 @@
 // @flow
 
-import * as React from "react";
+import * as React from 'react'
 
 // Image input can be a html element (image tag), an image path (remote or local) or a blob url
-export type Image = HTMLElement | string | Blob;
+export type Image = HTMLElement | string | Blob
 
 // ColorExtractor component props
 export type Props = {
@@ -16,4 +16,4 @@ export type Props = {
   // Extract colors from the image provided via `src` prop
   src: string,
   children?: React.Node
-};
+}

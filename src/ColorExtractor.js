@@ -13,7 +13,6 @@ class ColorExtractor extends React.Component<Props, void> {
     // Colors can be in vec3 format (rgb or hsl) or in hex format
     getColors: (colors: Array<Array<number> | string>) => {},
     rgb: false,
-    hsl: true,
     hex: true,
     src: null
   }
