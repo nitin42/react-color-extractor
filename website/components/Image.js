@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
-import { ColorExtractor } from "../../src";
+import { ColorExtractor } from '../../src'
 
 const IMAGE_STYLES = {
   width: 700,
   height: 500
-};
+}
 
 export const Image = props =>
   props.error ? (
@@ -16,4 +16,4 @@ export const Image = props =>
         <img src={props.image} style={IMAGE_STYLES} />
       </ColorExtractor>
     </div>
-  );
+  )

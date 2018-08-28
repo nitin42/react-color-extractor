@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 export const SearchInput = props => (
   <input
     className="search-input"
     type="text"
     value={props.imagePath}
-    placeholder="Enter an image url"
+    placeholder="Enter a local or remote image url, or a blob url"
     onChange={props.handleImage}
   />
-);
+)
