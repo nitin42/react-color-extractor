@@ -6,7 +6,7 @@ NOT RELEASED! WORK IN PROGRESS
 ![version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
 <p align="center">
-  <img src="./assets/color-extractor.gif" />
+  <img src="./assets/Demo.gif" />
 </p>
 
 ## What
