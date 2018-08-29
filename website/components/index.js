@@ -3,17 +3,20 @@ import { Image } from './Image'
 import { Swatches } from './Swatches'
 import { SearchInput } from './SearchInput'
 import { FileInput } from './UploadButton'
+import { Footer } from './Footer'
 
 const IMAGE = 'https://i.imgur.com/OCyjHNF.jpg'
 
 const GitHubLink = props => (
   <div style={{ marginTop: 20 }}>
     <a
-      className="link"
+      className="github-button"
       href="https://github.com/nitin42/react-color-extractor"
-      target="_blank"
+      data-size="large"
+      data-show-count="true"
+      aria-label="Star nitin42/react-color-extractor on GitHub"
     >
-      View on GitHub
+      Star
     </a>
   </div>
 )
@@ -92,6 +95,7 @@ export class App extends React.Component {
           <Swatches colors={this.state.colors} />
         ) : null}
         <GitHubLink />
+        <Footer />
       </div>
     )
   }
