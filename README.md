@@ -205,3 +205,9 @@ Run flow type checker using `yarn flow`
 ### Building the source code
 
 Run `yarn build:component` to build the source code.
+
+## TODO
+
+- [ ] Add quantizers
+
+- [ ] Props for increasing the amount of colors extracted
