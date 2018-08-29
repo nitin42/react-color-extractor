@@ -15,5 +15,7 @@ export type Props = {
   rgb: boolean,
   // Extract colors from the image provided via `src` prop
   src: string,
+  // Max color count for amount of colors from which swatches will be generated
+  maxColors: number,
   children?: React.Node
 }

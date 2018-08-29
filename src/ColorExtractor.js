@@ -14,7 +14,8 @@ class ColorExtractor extends React.Component<Props, void> {
     getColors: (colors: Array<Array<number> | string>) => {},
     rgb: false,
     hex: true,
-    src: null
+    src: null,
+    maxColors: 64
   }
 
   componentDidMount() {
@@ -66,6 +67,7 @@ class ColorExtractor extends React.Component<Props, void> {
   // Parse the image and extract the colors
   parseImage = (image: Image, props: Props) => {
     Vibrant.from(image)
+      .maxColorCount(props.maxColors)
       .getSwatches()
       .then(swatches =>
         props.getColors(this.getColorsFromSwatches(swatches, props))

@@ -172,6 +172,16 @@ This will log colors in `rgb` format
 />
 ```
 
+#### `maxColors`
+
+**`type: number`**
+
+`maxColors` prop accepts a number for amount of colors in palette from which swatches will be generated.
+
+```js
+<ColorExtractor src="..." getColors={colors => ...} maxColors={128} />
+```
+
 ## Contributing
 
 If you like to contribute to this project, then follow the below instructions to setup the project locally on your machine.
