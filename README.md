@@ -125,7 +125,7 @@ Check out [this](./examples/WithSrc.js) example.
 
 ## Using remote images
 
-Make sure that you've configured proxy settings in your server config when you are using the remote images, otherwise you might run into [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issue. In development mode, you can use [this](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en) chrome extension to tackle CORS issue.
+In development, make sure that you've configured proxy settings in your server config when you are using the remote images, otherwise you might run into [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issue. You can also use [this](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en) chrome extension to tackle CORS issue.
 
 ## API
 
