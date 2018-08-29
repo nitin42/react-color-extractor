@@ -1,7 +1,7 @@
 # react-color-extractor
 
 ![size](https://img.shields.io/badge/size-2.8KB-green.svg)
-![version](https://img.shields.io/badge/version-1.1.1-green.svg)
+![version](https://img.shields.io/badge/version-1.1.2-green.svg)
 
 <p align="center">
   <img src="./assets/Demo.gif" />
